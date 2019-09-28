@@ -6,40 +6,29 @@ public class Even_Odds {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         long n = s.nextLong(),k = s.nextLong();
-        long i =1,j=1,l=0,p=0;int e=0;
-        if(n % 2 == 0)e++;
-        if(e > 0){
-            p = n / 2;
-            if(k <= p)l=0;
-            else{
-                i = p;
-                l=1;
-                j =0;
+        long i,j,p=0;int e=0;
+        if(n%2==0)e++;
+        if(e>0){
+            p = n/2;
+            if(k <= p){
+                i = 1;
+                j = (2*k)+(-1);
+            }else{
+                k = k-p;
+                j = (2*k);
             }
         }else{
-            p = n / 2;
+            p = n/2;
             p++;
-            if(k <= p)l=0;
-            else{
-                i = p;
-                l = 1;
-                j =0;
-            }
-        }
-        System.out.println(e+" "+l+" "+j);
-        while(i < k){
-            if(l == 0){
-                if(j+2 <= n){
-                    j = j + 2;
-                    i++;
-                }
+            if(k <= p){
+                i = 1;
+                j = (2*k)+(-1);
             }else{
-                if(j+2 <= n){
-                    j = j+2;
-                    i++;
-                }
+                k = k-p;
+                j = (2*k);
             }
         }
         System.out.println(j);
+
     }
 }
