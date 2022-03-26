@@ -2,13 +2,10 @@ import java.util.Scanner;
 public class Anton_And_Polyhedron {
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
-        String t = "Tetrahedron", c = "Cube", o = "Octahedron", d = "Dodecahedron", i = "Icosahedron", input ="";    
-        int count = 0 , face = 0;
-        int num = s.nextInt();
-        while(count < num){
-            if(count < num){
-                input = s.nextLine();
-            }
+        String t = "Tetrahedron", c = "Cube", o = "Octahedron", d = "Dodecahedron", i = "Icosahedron", input;    
+        int num = s.nextInt(), count = 0, face = 0;
+        while(count <= num){
+            input = s.nextLine();
             if(input.equals(t)){
                 face += 4;
             }else if(input.equals(c)){
