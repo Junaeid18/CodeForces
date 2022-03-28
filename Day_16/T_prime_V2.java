@@ -34,27 +34,3 @@ public class T_prime_V2 {
         }
     }
 }
-
-
-/* 
-
-            if(test < (long)1e6){
-                test = (int)test;
-                if(test == 1){
-                    System.out.println("NO");
-                }else if(test1* test1 == test){
-                    if(list.contains((int)test)){
-                        System.out.println("YES");
-                    }
-                }else{
-                    System.out.println("NO");
-                }
-            }else{
-                if(test1* test1 == test){
-                    if(list.contains((int)test)){
-                        System.out.println("YES");
-                }
-            }
-
-
-*/
