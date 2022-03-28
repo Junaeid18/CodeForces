@@ -11,7 +11,7 @@ public class Police_Recruits {
                 }else{
                     ++crime;
                 }
-            }else{
+            }else{  
                 police += event;
             }
             ++count;
