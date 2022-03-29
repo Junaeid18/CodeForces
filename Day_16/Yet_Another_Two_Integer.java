@@ -11,7 +11,7 @@ public class Yet_Another_Two_Integer {
             rem = a - b;
             if(rem == 0){
                 System.out.println(0);
-            }else if(rem < 10){
+            }else if(rem < 10){  
                 System.out.println(1);
             }else{
                 if(rem % 10 == 0){
