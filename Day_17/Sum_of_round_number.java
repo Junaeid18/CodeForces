@@ -1,23 +1,29 @@
 import java.util.Scanner;
-
-import javax.swing.text.html.FormView;
 public class Sum_of_round_number {
     public static int[] modar = {10,100,1000,10000};
-    int length;
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
+        int[] res = new int[5];
         int count = 0,num, test = s.nextInt();
         while(count < test){
-            num = s.nextInt();  int rem = 1;
+            num = s.nextInt();  int rem,rem1; rem = rem1 = num; int length = 0;
             while(rem != 0){
-                rem = doTheMath(num);
+                rem = doTheMath(rem);
+                res[length] = rem1-rem; rem1 -= res[length];    length++;
             }
-            ++count;
+            System.out.println(length);
+            for (int i = 0; i < length; i++) {
+                System.out.print(res[i]+" ");
+            }
+            System.out.println();
+            count++;
         }
     }
     public static int doTheMath(int num){
         String numS = String.valueOf(num); int size = numS.length(), rem;
-        if(size == 2){
+        if(size == 1){
+            rem = 0;
+        }else if(size == 2){
             rem = num% modar[0];
         }else if(size == 3){
             rem = num% modar[1];
@@ -26,6 +32,6 @@ public class Sum_of_round_number {
         }else{
             rem = num% modar[3];
         }
-        return 0;
+        return rem;
     }
 }
