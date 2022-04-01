@@ -4,6 +4,18 @@ public class llya_And_BankAccount {
         Scanner s = new Scanner(System.in);
         int state = s.nextInt(),out;    String ss = String.valueOf(state),outs="";
         if(state < 0){
+            int a = state/10; int b = (state/100)*10 + state%10;
+            if(a>b){System.out.println(a);}
+            else {System.out.println(b);}
+        }else{
+            System.out.println(state);
+        }
+    }
+}
+
+
+/* 
+
             int a = ss.length(),b,c;
             if(a == 1){ System.out.println(0);}
             else{
@@ -24,8 +36,5 @@ public class llya_And_BankAccount {
                     System.out.println(outs);
                 }
             }
-        }else{
-            System.out.println(state);
-        }
-    }
-}
+
+*/
