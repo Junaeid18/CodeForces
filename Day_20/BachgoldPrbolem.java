@@ -13,7 +13,7 @@ public class BachgoldPrbolem {
         }else{
             count = (n - 3) /2;
             System.out.println(count+1);
-            System.out.print(3+" ");
+            System.out.print(3+" ");    
             for (int i = 0; i < count; i++) {
                 System.out.print(2+" ");
             }
