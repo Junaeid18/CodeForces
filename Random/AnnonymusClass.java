@@ -1,5 +1,3 @@
-import javax.sound.sampled.SourceDataLine;
-
 public class AnnonymusClass {
     public static void main(String[] args){
         Asia a = new Asia(){
