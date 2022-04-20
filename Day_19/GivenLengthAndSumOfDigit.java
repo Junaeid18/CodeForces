@@ -12,7 +12,7 @@ public class GivenLengthAndSumOfDigit {
         }else if(m < sum){
             list.clear();
             while(count < m){
-                if(rem > 9){
+                if(rem >= 9){
                     res += "9"; rem -= 9;   --len;
                 }else{
                     if(len > 0){
