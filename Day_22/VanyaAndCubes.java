@@ -14,7 +14,7 @@ public class VanyaAndCubes {
             lvlCube = 0;    
             for (int i = 1; i <= lvl; i++) {    lvlCube += i; }
             if(rem >= lvlCube){rem -= lvlCube; ++lvl;}  else{run=true;}
-        }
+        } s.close();
         System.out.println(lvl-1);
     }
 }
