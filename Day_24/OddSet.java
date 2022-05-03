@@ -16,6 +16,6 @@ public class OddSet {
             while(inC < 2*n){     if(s.nextInt()%2 == 1){ ++oddCount;}    ++inC;}
             if(oddCount == n){  System.out.println("YES");}
             else{   System.out.println("NO");}  ++count;
-        }
+        }s.close();
     }
 }
