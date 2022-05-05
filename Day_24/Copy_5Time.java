@@ -23,6 +23,8 @@
         }
     }
     
+
+    
     //ArrayList<Integer> list = new ArrayList<>();
     //list.clear();   list.add(s.nextInt());
     /* num = s.nextInt();
