@@ -7,7 +7,7 @@ public class LongNumber {
         long b = (long) a;
         long result = b * (b-1)/2;
         System.out.println(result);    
-    
-    
+        result = 2 * 1/2;
+        System.out.println(result);
     }    
 }
