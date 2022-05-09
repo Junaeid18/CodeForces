@@ -1,1 +1,2 @@
-var=-1;
+
+        Scanner s = new Scanner(System.in);
