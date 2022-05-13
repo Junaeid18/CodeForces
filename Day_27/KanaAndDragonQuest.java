@@ -7,7 +7,6 @@
 D-27
 */
 import java.util.Scanner;
-import static java.lang.Math.pow;
 public class KanaAndDragonQuest {
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
@@ -20,10 +19,11 @@ public class KanaAndDragonQuest {
             }
             res -= (m * 10);
             if(res > 0)out.append("NO"+"\n");   else out.append("YES"+"\n");
-        }
+        }s.close();
         System.out.print(out);
     }
 }
+
 
 /* 
 double[] ar = new double[31];   double sum = 0, calP;    
