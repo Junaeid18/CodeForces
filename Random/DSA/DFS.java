@@ -37,14 +37,19 @@ public class DFS {
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
         StringBuilder out = new StringBuilder();
-        DFS d = new DFS(4);
-        d.addEdge(0, 1);
-        d.addEdge(0, 2);
-        d.addEdge(1, 2);
-        d.addEdge(2, 0);
-        d.addEdge(2, 3);
-        d.addEdge(3, 3);
-        d.DFSmethod(2);
+        DFS d = new DFS(13);
+        d.addEdge(6, 7);
+        d.addEdge(12, 1);
+        d.addEdge(9, 7);
+        d.addEdge(1, 4);
+        d.addEdge(10, 7);
+        d.addEdge(7, 1);
+        d.addEdge(11, 8);
+        d.addEdge(5, 1);
+        d.addEdge(3, 7);
+        d.addEdge(5, 8);
+        d.addEdge(4, 2);
+        d.DFSmethod(1);
         System.out.println(Arrays.toString(visited));
     }
 }

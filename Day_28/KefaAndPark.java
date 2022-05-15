@@ -9,50 +9,57 @@ D-28
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Arrays;
 public class KefaAndPark {
     private LinkedList<Integer>[] adj;
     private static boolean[] visited;
     private static int[] cat;
-    private static int result = 0;
+    //private static int[] chkLeaf;
+    private static int m,result=0;
     KefaAndPark(int vertices){
-        adj = new LinkedList[vertices+1];
-        cat = new int[vertices+1];
-        visited = new boolean[vertices+1];
-        for (int i = 0; i < adj.length; i++) {
+        adj = new LinkedList[vertices];
+        cat = new int[vertices];
+        //chkLeaf = new int[vertices];
+        visited = new boolean[vertices];
+        for (int i = 1; i < adj.length; i++) {
             adj[i] = new LinkedList<>();
         }
     }
     void addEdge(int src, int dest){
         adj[src].add(dest);
     }
+    void show(){
+        System.out.println(Arrays.toString(adj));
+    }
     void Calculate(int vertex,int cats){
-        //System.out.println("Visiting vertex : "+vertex+" Remaining Cats : "+cats);
-        if(cats - cat[vertex] >= 0){
-            visited[vertex] = true; ++result; 
-            if(cat[vertex] == 1)--cats;
-            System.out.println("Visiting vertex : "+vertex+" Remaining Cats : "+cats);
-            Iterator<Integer> it = adj[vertex].listIterator();
-            while(it.hasNext()){
-                int adjacent = it.next();
-                if(!visited[adjacent]){
-                    Calculate(adjacent, cats);
-                }
+        visited[vertex] = true; 
+        if(cat[vertex] == 1)++cats; else cats = 0;
+        if(cats > m) return; 
+        boolean leafNode = true;
+        Iterator<Integer> it = adj[vertex].listIterator();
+        while(it.hasNext()){
+            int adjacent = it.next();
+            if(!visited[adjacent]){
+                Calculate(adjacent, cats);
+                leafNode = false;
             }
         }
+        if(leafNode)++result;
     }
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
-        StringBuilder out = new StringBuilder();
-        KefaAndPark k = new KefaAndPark(9);
-        for (int i = 1; i < 10; i++) {
+        int n = s.nextInt(),src,dest; m = s.nextInt(); 
+        KefaAndPark k = new KefaAndPark(n+1);
+        for (int i = 1; i <= n; i++) {
             cat[i] = s.nextInt();
         }
-        k.addEdge(1, 2);
-        k.addEdge(1, 3);
-        k.addEdge(2, 4);
-        k.addEdge(2, 5);
-        k.addEdge(4, 8);    k.addEdge(5, 9);
-        k.addEdge(3, 6);    k.addEdge(3, 7);
-        k.Calculate(1, 1);    
+        for (int i = 1; i < n; i++) {
+            src = s.nextInt(); dest = s.nextInt();
+            k.addEdge(src , dest);
+            k.addEdge(dest , src);
+            //chkLeaf[src]++; chkLeaf[dest]++;
+        }
+        k.Calculate(1, 0);
+        System.out.println(result);
     }
 }
