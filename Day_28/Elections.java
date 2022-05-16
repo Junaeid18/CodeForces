@@ -25,6 +25,7 @@ public class Elections {
     }
 }
 
+
 /* maxVote = max(a, max(c, b));    minVote = min(a, min(c, b));
 if(maxVote == minVote)out.append("1 1 1"+"\n");
 else{
