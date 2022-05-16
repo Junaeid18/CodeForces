@@ -62,7 +62,7 @@ public class VasyaAndCoins {
     }
     public static void main(String[] args){
         try {
-            StringBuilder output = new StringBuilder();
+            //StringBuilder output = new StringBuilder();
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
             int testCases = s.nextInt();
@@ -72,9 +72,10 @@ public class VasyaAndCoins {
                 if(a > 0 && b > 0)result = a+b*2+1;
                 else if(a > 0 && b == 0)result = a+1;
                 else result = 1;
-                output.append(result+"\n");
+                //output.append(result+"\n");
+                out.println(result);
             }
-            out.print(output);
+            //out.print(output);
             out.close();
         } catch (Exception e) {
             return;
