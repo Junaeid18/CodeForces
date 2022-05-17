@@ -12,9 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-import static java.lang.Math.abs;
-import static java.lang.Math.min;
-public class CombinationLock {
+public class OddSelection {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -74,21 +72,40 @@ public class CombinationLock {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int n = s.nextInt(),i=0,givNum,destNum,result=0;
-            String given = s.nextLine(), dest = s.nextLine();
-            while(i < n){
-                givNum = Character.getNumericValue(given.charAt(i));
-                destNum = Character.getNumericValue(dest.charAt(i));
-                if(abs(givNum-destNum)>5){
-                    result += min(givNum+10-destNum, 10-givNum+destNum);
-                }else{
-                    result += abs(givNum - destNum);
-                }   ++i;
+            int testCases = s.nextInt(),n,x,odd,even,i,num;
+            while(testCases-- > 0){
+                n = s.nextInt();    x = s.nextInt();    i = even = odd = 0;
+                while(i < n){
+                    if(s.nextInt()%2 == 0)++even; else ++odd;   ++i;
+                }
+                if(odd > 0){
+                    if(n == x && odd%2 != 0 && even%2 != 0)out.println("Yes");
+                    else{
+                        if(x%2 == 0){
+                            if(even > 0){
+                                num = (odd%2 == 0)? odd-1+even : odd+even;
+                                if(num >= x)out.println("Yes");
+                                else out.println("No");    
+                            }else out.println("No");
+                        }else{
+                            num = (odd%2 == 0)? odd-1+even : odd+even;
+                            if(num >= x)out.println("Yes");
+                            else out.println("No");       
+                        }
+                    }
+                }else out.println("No");
             }
-            out.println(result);
             out.close();
         } catch (Exception e) {
             return;
         }
     }
 }
+
+    /* if(odd%2==0){
+        if(odd-1+even >= x)out.println("Yes");
+        else out.println("No");
+    }else{
+        if(odd+even >= x)out.println("Yes");
+        else out.println("No"); 
+    } */
