@@ -1,3 +1,11 @@
+/*
+    Junaeid As Jknight
+    Somoy paile dekha koiro
+    alap-adda-gopposob hobe
+    cha or coffee er sathe.
+------<<<<<<*>>>>>>>>-----
+D-29
+*/
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
