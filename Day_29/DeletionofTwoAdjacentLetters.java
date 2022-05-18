@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-29
+D-29    Problem - 1650A
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-public class OddSelection {
+public class DeletionofTwoAdjacentLetters {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -72,28 +72,17 @@ public class OddSelection {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),n,x,odd,even,i,num;
+            int testCases = s.nextInt(),i,size,loc;
+            String inp; char c; boolean status;
             while(testCases-- > 0){
-                n = s.nextInt();    x = s.nextInt();    i = even = odd = 0;
-                while(i < n){
-                    if(s.nextInt()%2 == 0)++even; else ++odd;   ++i;
+                inp = s.nextLine(); c = s.nextLine().charAt(0); i = 0; status = false;  size  = inp.length();
+                while(i < size && !status){
+                    if(inp.charAt(i) == c){
+                        loc = i + 1;
+                        if(loc%2 != 0)status = true;
+                    }   ++i;
                 }
-                if(odd > 0){
-                    if(n == x && odd%2 != 0 && even%2 != 0)out.println("Yes");
-                    else{
-                        if(x%2 == 0){
-                            if(even > 0){
-                                num = (odd%2 == 0)? odd-1+even : odd+even;
-                                if(num >= x)out.println("Yes");
-                                else out.println("No");    
-                            }else out.println("No");
-                        }else{
-                            num = (odd%2 == 0)? odd-1+even : odd+even;
-                            if(num >= x)out.println("Yes");
-                            else out.println("No");       
-                        }
-                    }
-                }else out.println("No");
+                if(status)out.println("YES");    else out.println("NO");
             }
             out.close();
         } catch (Exception e) {
@@ -101,3 +90,4 @@ public class OddSelection {
         }
     }
 }
+
