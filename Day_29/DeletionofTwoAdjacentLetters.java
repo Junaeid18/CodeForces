@@ -73,6 +73,7 @@ public class DeletionofTwoAdjacentLetters {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
             int testCases = s.nextInt(),i,size,loc;
+            //long time = System.currentTimeMillis();
             String inp; char c; boolean status;
             while(testCases-- > 0){
                 inp = s.nextLine(); c = s.nextLine().charAt(0); i = 0; status = false;  size  = inp.length();
@@ -84,6 +85,7 @@ public class DeletionofTwoAdjacentLetters {
                 }
                 if(status)out.println("YES");    else out.println("NO");
             }
+            //out.println("Execution Time : "+ (System.currentTimeMillis() - time) + "ms");
             out.close();
         } catch (Exception e) {
             return;
