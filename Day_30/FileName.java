@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-30 Problem - 1506A
+D-30 Problem - 978B
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-public class StrangeTable {
+public class FileName {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -72,16 +72,17 @@ public class StrangeTable {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt();
-            long col,row,rowNum,x,ans,colNum;
-            while(testCases-- > 0){
-                row = s.nextLong(); col = s.nextLong(); x = s.nextLong();   ans = 0;
-                --x;
-                rowNum = x % row;   
-                colNum = x / row;
-                ans = rowNum * col + colNum + 1;
-                out.println(ans);
+            int n = s.nextInt(),i=0,xCount=0,remove=0;
+            String inp = s.nextLine();
+            while(i < n){
+                if(inp.charAt(i) == 'x')++xCount;
+                else{
+                    if(xCount >= 3)remove += xCount - 2;
+                    xCount = 0;
+                }   ++i;
             }
+            if(xCount >= 3)remove += xCount - 2;
+            out.println(remove);
             out.close();
         } catch (Exception e) {
             return;
