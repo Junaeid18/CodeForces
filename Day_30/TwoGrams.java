@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-30 Problem - 1529A - Eshag Loves Big Array
+D-30 Problem - 977B
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,7 +12,8 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-public class EshagLovesBigArray {
+import java.util.ArrayList;
+public class TwoGrams {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -72,16 +73,21 @@ public class EshagLovesBigArray {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),n,num,min,i,ar[];
-            while(testCases-- > 0){
-                n = s.nextInt();    i = 0;  min = 101; ar = new int[101];
-                while(i < n){
-                    num = s.nextInt();  ar[num]++;
-                    if(num < min)min = num;
-                    ++i;
-                }   
-                out.println(n-ar[min]);
+            int n = s.nextInt(),ar[] = new int[n],max=0,i=0,index=0,pos;
+            ArrayList<String> list = new ArrayList<>();
+            String input = s.nextLine(),sub;
+            while(i < n-1){
+                sub = input.substring(i, i+2);
+                if(!list.contains(sub)){
+                    list.add(sub); ar[index]++; ++index;
+                }else{
+                    pos = list.indexOf(sub);    ar[pos]++;
+                } ++i;
             }
+            for (int j = 1; j < ar.length; j++) {
+                max = (ar[j] > ar[max]) ? j : max;  
+            }
+            out.println(list.get(max));
             out.close();
         } catch (Exception e) {
             return;
