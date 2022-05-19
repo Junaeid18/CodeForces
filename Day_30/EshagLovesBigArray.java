@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-30 Problem - 1360C - Simiar Pairs
+D-30 Problem - 1529A - Eshag Loves Big Array
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,9 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import static java.lang.Math.abs;
-public class SimilarPairs {
+public class EshagLovesBigArray {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -74,26 +72,16 @@ public class SimilarPairs {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),n,i,ar[],even,odd;
-            boolean status;
+            int testCases = s.nextInt(),n,num,min,i,ar[];
             while(testCases-- > 0){
-                n = s.nextInt();  ar = new int[n];  i = even = odd = 0; status = false;
+                n = s.nextInt();    i = 0;  min = 101; ar = new int[101];
                 while(i < n){
-                    ar[i] = s.nextInt();
-                    if(ar[i]%2 == 0)++even; else ++odd; 
+                    num = s.nextInt();  ar[num]++;
+                    if(num < min)min = num;
                     ++i;
-                }
-                if(even%2 == 0)out.println("YES");
-                else{
-                    Arrays.sort(ar);
-                    for (int j = 0; j < ar.length-1; j++) {
-                        if((ar[j]%2 != ar[j+1]%2) && abs(ar[j]-ar[j+1]) == 1){
-                            status = true; break;
-                        }
-                    }
-                    if(status)out.println("YES");   else out.println("NO");
-                }
-            }   
+                }   
+                out.println(n-ar[min]);
+            }
             out.close();
         } catch (Exception e) {
             return;
@@ -101,26 +89,17 @@ public class SimilarPairs {
     }
 }
 
-
-
-        /* for (k = 0; k < ar.length - 1; ++k) {
-            if(abs(ar[k] - ar[k+1]) == 1)++k;
-            else{
-                dummyList.add(ar[k]);
+    /* if(ar[n-1] * n == sum)out.println(0);
+    else{
+        Arrays.sort(ar); i = n-1;
+        while(i >= 0 && status){
+            delSum += ar[i];
+            if(delSum > (sum - delSum)){status = false; ++count;} else {--i; ++count;}
+        }
+        if(ar[i] == ar[i-1]){
+            while(ar[i] == ar[i-1]){
+                ++count;    --i;
             }
-        }   if(k == (n-1))dummyList.add(ar[n-1]);
-        if(dummyList.size() > 0){
-            for (int j = 0; j < dummyList.size(); j+=2) {
-                if((dummyList.get(j)+dummyList.get(j+1))%2 != 0){
-                    dummyList1.add(dummyList.get(j));  dummyList1.add(dummyList.get(j+1));  
-                }
-            }
-            if(dummyList1.size() > 0){
-                for (int j = 0; j < dummyList1.size(); j++) {
-                    if(dummyList1.get(j)%2 == 0)++e;    else ++o;
-                }
-                max = max(e,o);
-                if(max%2 == 0)out.println("YES");
-                else out.println("NO");
-            }else out.println("YES");
-        }else out.println("YES"); */
+        }
+        out.println(count);
+    } */
