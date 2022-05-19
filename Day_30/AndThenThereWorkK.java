@@ -4,7 +4,8 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-30 Problem - 1527A
+D-30 Problem - 1527A    
+MSG - Bitmask is easy bt don't take it as easy as it seems.
 */ 
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
