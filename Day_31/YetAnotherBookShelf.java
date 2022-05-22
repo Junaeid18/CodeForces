@@ -4,9 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-31 Problem - 1373B - 01 Game
-
-    Don't Lose hope, be patient and Most Important - Take some break, atleast when you are sick or not okay.
+D-31 Problem - Yet Another Book Shelf - 1433B
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -14,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-public class ZeroOneGame {
+public class YetAnotherBookShelf {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -74,28 +72,19 @@ public class ZeroOneGame {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),size,i,one;
-            String inp;
+            int testCases = s.nextInt(),n,ans,count;
+            boolean leftOne;
             while(testCases-- > 0){
-                inp = s.nextLine(); one = 0;
-                size = inp.length();    i = 0;
-                while(i < size){
-                    if(Character.getNumericValue(inp.charAt(i)) == 1)++one;
-                    ++i;
-                }
-                if(size == one || one == 0)out.println("NET");
-                else{
-                    if(one%2 != 0){
-                        if(one <= (size - one))out.println("DA");
-                        else{
-                            if((size - one)%2 != 0)out.println("DA");
-                            else out.println("NET");
-                        }
+                n = s.nextInt();    leftOne = false; count = ans = 0;
+                while(n-- > 0){
+                    if(s.nextInt() == 0){
+                        if(leftOne)++count;
                     }else{
-                        if((size-one) %2 != 0 && one > size-one )out.println("DA");
-                        else out.println("NET");
+                        if(leftOne){ans +=count; count = 0; }
+                        else leftOne = true;
                     }
                 }
+                out.println(ans);
             }
             out.close();
         } catch (Exception e) {
@@ -103,4 +92,3 @@ public class ZeroOneGame {
         }
     }
 }
-
