@@ -72,7 +72,7 @@ public class MakeAp {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),a,b,c,avg,diff,num;
+            int testCases = s.nextInt(),a,b,c,a1,b1,c1,diff1,diff2,num;
             while(testCases-- > 0){
                 a = s.nextInt(); b = s.nextInt();   c = s.nextInt();
                 if(a == b && b == c)out.println("YES");
@@ -84,11 +84,13 @@ public class MakeAp {
                     num = b/c;
                     if(num * c == b)out.println("YES"); else out.println("NO");
                 }else{
-                    int a1=b-(c-b), b1 = (a > c)?a-(a-c):,   c1 = b-(a-b);
-                    System.out.println(a1+" "+b1+" "+c1);
-                    if((a1>a && ((a1/a)*a)==a1) || (b1>b && ((b1/b)*b)==b1) || (c1>c && ((c1/c)*c)==c1)){
-                        out.println("YES");
-                    }else out.println("NO");
+                    diff1 = b - c;  a1 = c + (2 * diff1);
+                    b1 = (a + c)/2; 
+                    diff2 = b - a; c1 = a + (2 * diff2);
+                    if(a1>a && a1%a==0)out.println("YES");
+                    else if(b1>b && b1%b==0 && a-b1 == b1-c)out.println("YES");
+                    else if(c1>c && c1%c==0)out.println("YES");
+                    else out.println("NO");
                 }
             }
             out.close();
@@ -97,3 +99,14 @@ public class MakeAp {
         }
     }
 }
+/* if(a == b && b == c)out.println("YES");
+else if((a-b == b-c)|| (c-b == b-a))out.println("YES");
+else if(a < b && b == c){
+    num = b/a;  
+    if(num * a == b)out.println("YES"); else out.println("NO");
+}else if(a == b && b > c){
+    num = b/c;
+    if(num * c == b)out.println("YES"); else out.println("NO");
+}else{
+
+} */
