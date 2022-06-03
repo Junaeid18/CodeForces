@@ -72,21 +72,42 @@ public class Party {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int ar[],n,i,boss,maxHier;
-            n = s.nextInt();    ar = new int[n+1];  i = 0;
-                while(i < n){
-                    boss = s.nextInt();
-                    if(boss != -1)ar[boss]++;
-                    ++i;
-                }   i = 2;  maxHier = ar[1];
-                while(i <= n){
-                    if(maxHier < ar[i])maxHier = ar[i];
-                    ++i;
+            int ar[],ar2[],count,n = s.nextInt(),i=1,num,group=0;
+            ar = new int[n+1];  ar2 = new int[n+1];
+            while(i <= n){
+                num = s.nextInt();  count = 0;
+                if(num == -1)ar[i]=num;
+                else{
+                    ar[i] = num;
+                    while(ar[num] != -1){
+                        num = ar[num];  ++count;
+                    }   ++count;
+                    if(count > ar2[num])ar2[num] = count;
+                }   ++i;
+            }   i = 1;
+            while(i <= n){
+                if(ar[i] == -1)break;   else ++i;
+            }   group = ar2[i]; ++i;
+            for (int j = i; j <= n; j++) {
+                if(ar[j] == -1){
+                    if(ar2[j] > group)group = ar2[j];
                 }
-            out.println(maxHier+1);
+            }
+            out.println(group+1);
             out.close();
         } catch (Exception e) {
             return;
         }
     }
 }
+
+/* while(i < n){
+    boss = s.nextInt();
+    if(boss != -1)ar[boss]++;
+    ++i;
+}   i = 2;  maxHier = ar[1];
+while(i <= n){
+    if(maxHier < ar[i])maxHier = ar[i];
+    ++i;
+}
+out.println(maxHier+1); */
