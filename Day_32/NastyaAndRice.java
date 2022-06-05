@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-33 Problem - Party 115 - A [Version 2]
+D-33 Problem - 1341A - NastyaAndRice
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-public class PartyV2 {
+public class NastyaAndRice {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -72,29 +72,38 @@ public class PartyV2 {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int n = s.nextInt(),i=1,ar[],finalAr[],count,num,group;
-            ar = new int[n+1];  finalAr = new int[n+1];
-            while(i <= n){
-                ar[i] = s.nextInt();    ++i;
-            }   i=1;
-            while(i <= n){
-                if(ar[i] == -1)finalAr[i] = 1;
-                else{
-                    count = 0;  num = i;
-                    while(ar[num] != -1){
-                        ++count; num = ar[num];   
-                    }   ++count;    finalAr[i] = count;
-                }
-                ++i;
+            int testCases = s.nextInt(),a,b,c,d,n,num,min,max;
+            boolean status;
+            while(testCases-- > 0){
+                n = s.nextInt();
+                a = s.nextInt();    b = s.nextInt();
+                c = s.nextInt();    d = s.nextInt();
+                min = (a-b) * n;    max = (a+b) * n;
+                if(c-d > max || c+d < min)out.println("NO");
+                else out.println("YES");
             }
-            group = finalAr[0];
-            for (int j = 1; j <= n; j++) {
-                if(finalAr[j] > group)group = finalAr[j];
-            }
-            out.println(group);
             out.close();
         } catch (Exception e) {
             return;
         }
     }
 }
+
+/* status = false;
+if((a-b) <= (c+d)){
+    for (int i = a-b; i <= (a+b); i++) {
+        num = i * n;
+        if(num <= (c+d)){
+            for (int j = c-d; j <= (c+d); j++) {
+                if(j%num == 0){
+                    if(n == (j/i)){
+                        status = true; break;
+                    }
+                }
+            }
+        }else break;
+    }
+}
+if(status){
+    out.println("YES");
+}else out.println("NO"); */
