@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-34 Problem - Ternary Xor - 1328-C
+D-34 Problem - Chewbacca And Number - 514A
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-public class TernaryXor {
+public class ChewbaccaAndNumber {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -72,25 +72,21 @@ public class TernaryXor {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),n;
-            String x;   StringBuilder a = new StringBuilder(),b = new StringBuilder();
-            while(testCases-- > 0){
-                n = s.nextInt();    
-                x = s.nextLine();
-                for (int i = 0; i < n; i++) {
-                    if(x.charAt(i) == '1'){
-                        a.append('1');   b.append('0');
-                        for (int j = i+1; j < n; j++) {
-                            b.append(x.charAt(j));  a.append('0');  
-                        }   break;
-                    }else if(x.charAt(i) == '2'){
-                        a.append('1'); b.append('1');
-                    }else{
-                        a.append('0');  b.append('0');
-                    }
-                }
-                out.println(a); out.println(b); a.setLength(0); b.setLength(0);
+            int length, i = 0,digit;
+            StringBuilder result = new StringBuilder();
+            String num = s.nextLine();
+            length = num.length();  digit = Character.getNumericValue(num.charAt(i));
+            if(digit > 4 && digit != 9){  digit = 9 - digit;  result.append(digit); }
+            else{  result.append(digit);  } 
+            ++i; 
+            while(i < length){
+                digit = Character.getNumericValue(num.charAt(i));
+                if(digit > 4){
+                    digit = 9 - digit;  result.append(digit);
+                }else result.append(digit);
+                ++i;
             }
+            out.println(result);
             out.close();
         } catch (Exception e) {
             return;
