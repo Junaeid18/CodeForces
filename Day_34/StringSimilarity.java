@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-34 Problem - 1476A - K-divisible Sum
+D-34 Problem - 1400A - String Similarity
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,8 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-import static java.lang.Math.ceil;
-public class K_divisibleSum {
+public class StringSimilarity {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -73,18 +72,22 @@ public class K_divisibleSum {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),n,k,result;
+            int testCases = s.nextInt(),n,temp;
+            StringBuilder result = new StringBuilder();
+            String input;
+            char c; boolean  status;
             while(testCases-- > 0){
-                n = s.nextInt();    k = s.nextInt();
-                if(n >= k){
-                    if(n%k == 0)result = 1;
-                    else{
-                        result = 2;
+                n = s.nextInt();    input = s.nextLine();      
+                for (int i = 0; i < n; i++) {
+                    status = false;
+                    for (int j = i; j < (i+n); j++) {
+                        if(input.charAt(j) == '1'){
+                            result.append(1);   status = true;  break;
+                        }
                     }
-                }else{
-                    result = (int) ceil((double) k/n);
+                    if(!status)result.append(0);
                 }
-                out.println(result);
+                out.println(result);    result.setLength(0);
             }
             out.close();
         } catch (Exception e) {
@@ -92,4 +95,20 @@ public class K_divisibleSum {
         }
     }
 }
-    
+
+
+/* 
+            while(testCases-- > 0){
+                n = s.nextInt();    input = s.nextLine();   status = false;   
+                c = input.charAt((n-1));    temp = (2 * n) - 1;
+                for (int i = n; i < temp; i++) {
+                    if(input.charAt(i) != c){
+                        status = true;  break;
+                    }
+                }
+                if(status)result.append(0); else result.append(c);
+                for (int i = 1; i < n; i++) result.append(0);
+                result.reverse();
+                out.println(result);    result.setLength(0);
+            }
+ */
