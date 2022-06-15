@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-34 Problem - 1398A - Bad Triangle
+D-34 Problem - Red And Blue Beans - 1519A
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,7 +12,8 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-public class BadTriangle {
+import static java.lang.Math.ceil;
+public class RedAndBlueBeans {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -72,17 +73,17 @@ public class BadTriangle {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),n,ar[];
+            int testCases = s.nextInt(),r,b,d,num;
+            String result;
             while(testCases-- > 0){
-                n = s.nextInt();    ar = new int[n+1];
-                for (int i = 1; i <= n; i++) {
-                    ar[i] = s.nextInt();
-                }
-                if(ar[1]+ar[2] > ar[n])out.println(-1);
-                else out.println(1+" "+2+" "+n);
+                r = s.nextInt();    b = s.nextInt();    d = s.nextInt();
+                if(r >= b) num = ((int) ceil((double) r/b)) - 1;
+                else num = ((int) ceil((double) b/r)) - 1;
+                result = (num <= d)? "YES" : "NO";
+                out.println(result);
             }
             out.close();
-        } catch (Exception e) { 
+        } catch (Exception e) {
             return;
         }
     }
