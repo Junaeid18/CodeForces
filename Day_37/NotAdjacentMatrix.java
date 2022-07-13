@@ -4,7 +4,7 @@
     alap-adda-gopposob hobe
     cha or coffee er sathe.
 ------<<<<<<*>>>>>>>>-----
-D-36 Problem -  1326A - Bad Ugly Numbers
+D-37 Problem - Not Adjacent Matrix - 1520C
 */
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-public class BadUglyNumbers {
+public class NotAdjacentMatrix {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
@@ -72,18 +72,44 @@ public class BadUglyNumbers {
         try {
             FastReader s = new FastReader();
             FastWriter out = new FastWriter();
-            int testCases = s.nextInt(),n;
-            StringBuilder output = new StringBuilder();
-            while(testCases-- > 0) {
-                n = s.nextInt();
-                if(n >= 2){
-                    output.append(2);
-                    for (int i = 1; i < n; i++) {
-                        output.append(3);
+            int testCases = s.nextInt(),n,m,evenRow,oddRow,element;
+            boolean IncDecState,InternalEvenState;
+            while(testCases-- > 0){
+                n = s.nextInt();   IncDecState = false; element = 1;
+                if(n == 1)out.println(1);
+                else if(n == 2)out.println(-1);
+                else{
+                    if(n%2 ==0){    oddRow  = n/2; evenRow = oddRow;    }
+                    else{ evenRow = n/2; oddRow = evenRow + 1; }
+                    for (int i = 0; i < oddRow; i++) {
+                        if(i > 0) element += 2;
+                        if(IncDecState) {IncDecState = false; m = (-1 * n);} else {IncDecState = true; m = n;}
+                        for (int j = 0; j < n; j++) {
+                            if(j > 0 ) element += m;
+                            out.print(element + " ");          
+                        }
+                        out.println("");
                     }
-                    out.println(output);
-                }else out.println(-1);
-                    output.setLength(0);
+                    element = 2; IncDecState = false;
+                    for (int i = 0; i < evenRow; i++) {
+                        if(i > 0) element += 2;
+                        if(IncDecState) {IncDecState = false; m = (-1 * n);} else {IncDecState = true; m = n;}
+                        for (int j = 0; j < n; j++) {
+                            if(i == 0 && n == 3){
+                                if(j > 0 ){
+                                    InternalEvenState = (j %2 != 0) ? true : false;
+                                    if(InternalEvenState)element += (2 * m);
+                                    else element -= m;
+                                }
+                                out.print(element + " ");        
+                            }else{
+                                if(j > 0 ) element += m;
+                                out.print(element + " ");          
+                            }
+                        }
+                        out.println("");
+                    }
+                }
             }
             out.close();
         } catch (Exception e) {
